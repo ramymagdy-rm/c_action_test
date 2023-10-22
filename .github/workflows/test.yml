@@ -14,24 +14,25 @@ jobs:
               run: echo "Hello from test workflow"
 
     # Job to build and test c code
-    needs: [say-hello]
-    runs-on: ubuntu-latest
-    steps:
-        # Use gitbub.com/actions/checkout to checkout from this repo
-        - name: Check out this repo
-          uses: actions/checkout@v4
+    build-and-test:
+        needs: [say-hello]
+        runs-on: ubuntu-latest
+        steps:
+            # Use gitbub.com/actions/checkout to checkout from this repo
+            - name: Check out this repo
+              uses: actions/checkout@v4
 
-        # Install necessary packages
-        - name: Insatll dependencies
-          run: sudo apt install -y build-essential python3
-          # Install python
-          #- name: Install python
-          #  uses: actions/setup-python@v4
-          
-          # show current path
-        - run: pwd
+            # Install necessary packages
+            - name: Insatll dependencies
+              run: sudo apt install -y build-essential python3
+            # Install python
+            #- name: Install python
+            #  uses: actions/setup-python@v4
+            
+            # show current path
+            - run: pwd
 
-        # run the test
-        - name: Run test
-          run: python3 test.py
+            # run the test
+            - name: Run test
+              run: python3 test.py
         
