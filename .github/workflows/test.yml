@@ -1,0 +1,13 @@
+# Workflow name
+name: test workflow
+
+# Define the trigger event
+on: [push]
+
+# Jobs run i parallel by default, each run steps in sequence
+jobs:
+    # Print somehting
+    say-hello:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "Hello from test workflow"
